@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: '<%= simplemocha.unit.src %>',
+            files: ['index.js', 'src/**/*.js', '<%= simplemocha.unit.src %>'],
             tasks: ['test:unit']
         }
     });
