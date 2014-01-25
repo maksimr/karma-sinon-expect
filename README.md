@@ -1,6 +1,8 @@
 karma-sinon-expect
 ================
 
+[![Build Status](https://travis-ci.org/maksimr/karma-sinon-expect.png?branch=master)](https://travis-ci.org/maksimr/karma-sinon-expect)
+
   * [Sinon](http://sinonjs.org/)
   * [Expect.js](https://github.com/LearnBoost/expect.js/)
 

@@ -5,11 +5,20 @@
         "name": "Maksim Ryzhikov",
         "email": "rv.maksim@yandex.com"
     },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/maksimr/karma-sinon-expect.git"
+    },
+    "bugs": {
+        "url": "https://github.com/maksimr/karma-sinon-expect/issues"
+    },
     "keywords": [
         "karma-plugin",
         "karma-expect",
         "karma-sinon",
         "sinon",
+        "mocha",
+        "test",
         "expect"
     ],
     "dependencies": {
@@ -27,5 +36,8 @@
         "karma": "~0.11.12",
         "karma-mocha": "~0.1.1",
         "karma-phantomjs-launcher": "~0.1.1"
+    },
+    "scripts": {
+        "test": "grunt test"
     }
 }
