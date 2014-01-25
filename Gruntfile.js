@@ -28,7 +28,6 @@ module.exports = function(grunt) {
         },
         'npm-publish': {
             options: {
-                requires: ['test'],
                 abortIfDirty: true
             }
         },
