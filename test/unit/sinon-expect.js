@@ -19,6 +19,18 @@ describe('expect', function() {
         });
     });
 
+    describe('expect.calledWith', function() {
+        it('Does not fail when method was called with specified arguments', function() {
+            expect(sinon.stub().callsArgWith(0, 'baz').returnsArg(0)(sinon.stub())).to.be.calledWith('baz');
+        });
+
+        it('Fails when method was called with not specified arguments', function() {
+            expect(function() {
+                expect(sinon.stub().callsArgWith(0, 'foo').returnsArg(0)(sinon.stub())).to.be.calledWith('baz');
+            }).to.throwError(/expected stub to be called with arguments baz/);
+        });
+    });
+
     /**
      * ...
      *
