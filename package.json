@@ -1,6 +1,17 @@
 {
     "name": "karma-sinon-expect",
     "version": "0.1.0",
+    "author": {
+        "name": "Maksim Ryzhikov",
+        "email": "rv.maksim@yandex.com"
+    },
+    "keywords": [
+        "karma-plugin",
+        "karma-expect",
+        "karma-sinon",
+        "sinon",
+        "expect"
+    ],
     "dependencies": {
         "expect.js": "~0.2.0",
         "sinon": "~1.7.3"
@@ -10,6 +21,11 @@
         "grunt-simple-mocha": "git://github.com/yaymukund/grunt-simple-mocha.git",
         "grunt-contrib-watch": "~0.5.0",
         "load-grunt-tasks": "~0.2.0",
-        "mocha": "~1.8"
+        "mocha": "~1.8",
+
+        "grunt-karma": "~0.7.0",
+        "karma": "~0.11.12",
+        "karma-mocha": "~0.1.1",
+        "karma-phantomjs-launcher": "~0.1.1"
     }
 }

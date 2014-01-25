@@ -32,10 +32,37 @@
     };
 
     if (isNode) {
-        module.exports = useSinonExpect(require('sinon'), require('expect.js'));
+        /**
+         * Nodejs
+         */
+        module.exports.expect = useSinonExpect(require('sinon'), require('expect.js'));
         module.exports.use = useSinonExpect;
+
+        /**
+         * Karma adapter
+         */
+        var path = require('path');
+        var pattern = function(file) {
+            return {
+                pattern: file,
+                included: true,
+                served: true,
+                watched: false
+            };
+        };
+        var framework = function(files) {
+            files.unshift(pattern(path.join(__dirname, 'index.js')));
+            files.unshift(pattern(path.resolve(require.resolve('expect.js'))));
+            files.unshift(pattern(path.resolve(require.resolve('sinon'), '../../pkg/sinon.js')));
+        };
+        framework.$inject = ['config.files'];
+
+        module.exports['framework:sinon-expect'] = ['factory', framework];
         return;
     }
 
+    /**
+     * Browser
+     */
     useSinonExpect(global.sinon, global.expect);
 }(this));
