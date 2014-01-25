@@ -26,7 +26,8 @@
     "sinon": "~1.7.3"
   },
   "devDependencies": {
-    "grunt": "~0.4",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
     "grunt-npm": "~0.0.2",
     "grunt-bump": "~0.0.7",
     "grunt-simple-mocha": "git://github.com/yaymukund/grunt-simple-mocha.git",
