@@ -1,6 +1,8 @@
 karma-sinon-expect
 ================
 
+![Karma](http://karma-runner.github.io/assets/img/banner.png "Karma")
+
 [![Build Status](https://travis-ci.org/maksimr/karma-sinon-expect.png?branch=master)](https://travis-ci.org/maksimr/karma-sinon-expect)
 
   * [Sinon](http://sinonjs.org/)
