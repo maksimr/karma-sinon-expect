@@ -17,15 +17,32 @@
 
         if (Object.keys) {
             Object.keys(sinon.assert).forEach(function(assertName) {
+                if (expect.Assertion.prototype[assertName]) {
+                    return;
+                }
+
                 return expect.Assertion.prototype[assertName] = generateExpectAssert(assertName);
             });
         } else {
             for (var assertName in sinon.assert) {
-                if (sinon.assert.hasOwnProperty(assertName)) {
+                if (sinon.assert.hasOwnProperty(assertName) && !expect.Assertion.prototype[assertName]) {
                     expect.Assertion.prototype[assertName] = generateExpectAssert(assertName);
                 }
             }
         }
+
+        expect.Assertion.prototype.argument = function(argumentIndex) {
+            sinon.assert.called(this.obj);
+            return expect(this.obj.args[0][argumentIndex]);
+        };
+
+        expect.Assertion.prototype.firstArgument = function() {
+            return expect(this.obj).argument(0);
+        };
+
+        expect.Assertion.prototype.secondArgument = function() {
+            return expect(this.obj).argument(1);
+        };
 
         expect.sinon = sinon;
         return expect;

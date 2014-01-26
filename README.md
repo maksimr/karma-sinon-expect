@@ -81,6 +81,40 @@ describe 'karma tests with sinon', ->
     expect(foo.bar).to.be.calledWith 'baz'
 ```
 
+Additional expectation
+
+- firstArgument
+- secondArgument
+- argument
+
+```coffee
+describe 'tests sinon spy with arguments', ->
+
+  it 'expect first argument', ->
+    foo = bar: ->
+    sinon.spy foo, 'bar'
+
+    foo.bar 'baz'
+
+    expect(foo.bar).firstArgument().to.be.equal 'baz'
+
+  it 'expect second argument', ->
+    foo = bar: ->
+    sinon.spy foo, 'bar'
+
+    foo.bar 'baz', 'foo'
+
+    expect(foo.bar).secondArgument().to.be.equal 'foo'
+
+  it 'expect any argument', ->
+    foo = bar: ->
+    sinon.spy foo, 'bar'
+
+    foo.bar 'baz', 'foo', 'bar'
+
+    expect(foo.bar).argument(2).to.be.equal 'bar'
+```
+
 Conversion table
 ----------------
 
