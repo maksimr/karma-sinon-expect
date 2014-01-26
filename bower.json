@@ -1,7 +1,7 @@
 {
     "name": "sinon-expect",
     "version": "0.1.0",
-    "main": "index.js",
+    "main": "sinon-expect.js",
     "ignore": [
         "**/.*",
         "node_modules",

@@ -21,6 +21,7 @@
     "test",
     "expect"
   ],
+  "main": "sinon-expect.js",
   "dependencies": {
     "expect.js": "~0.2.0",
     "sinon": "~1.7.3"

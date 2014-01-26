@@ -68,7 +68,7 @@
             };
         };
         var framework = function(files) {
-            files.unshift(pattern(path.join(__dirname, 'index.js')));
+            files.unshift(pattern(path.join(__dirname, 'sinon-expect.js')));
             files.unshift(pattern(path.resolve(require.resolve('expect.js'))));
             files.unshift(pattern(path.resolve(require.resolve('sinon'), '../../pkg/sinon.js')));
         };

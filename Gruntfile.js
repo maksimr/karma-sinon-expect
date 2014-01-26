@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: ['index.js', 'src/**/*.js', '<%= simplemocha.unit.src %>'],
+            files: ['sinon-expect.js', 'src/**/*.js', '<%= simplemocha.unit.src %>'],
             tasks: ['test']
         }
     });

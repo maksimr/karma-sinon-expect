@@ -61,7 +61,7 @@ $ bower install sinon-expect
 ```html
 <script src="bower_components/expect/expect.js" type="text/javascript"></script>
 <script src="bower_components/sinonjs/sinon.js" type="text/javascript"></script>
-<script src="bower_components/sinon-expect/index.js" type="text/javascript"></script>
+<script src="bower_components/sinon-expect/sinon-expect.js" type="text/javascript"></script>
 ```
 
 Usage

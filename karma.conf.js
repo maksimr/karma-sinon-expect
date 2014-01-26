@@ -8,7 +8,7 @@ module.exports = function(config) {
         plugins: [
             'karma-mocha',
             'karma-phantomjs-launcher',
-            require('./index.js'),
+            require('./sinon-expect.js'),
         ],
         logLevel: config.LOG_DEBUG,
         browsers: ['PhantomJS']
