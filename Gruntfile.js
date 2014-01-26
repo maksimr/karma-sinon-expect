@@ -27,6 +27,7 @@ module.exports = function(grunt) {
             }
         },
         'npm-publish': {
+            requires: ['build'],
             options: {
                 abortIfDirty: true
             }
@@ -36,15 +37,23 @@ module.exports = function(grunt) {
                 commitMessage: 'chore: update contributors'
             }
         },
+        uglify: {
+            all: {
+                files: {
+                    'sinon-expect.min.js': ['sinon-expect.js']
+                }
+            }
+        },
         watch: {
             files: ['sinon-expect.js', 'src/**/*.js', '<%= simplemocha.unit.src %>'],
             tasks: ['test']
         }
     });
 
+    grunt.registerTask('build', ['uglify:all']);
     grunt.registerTask('release', 'Bump the version and publish to NPM.', function(type) {
-        return grunt.task.run(['npm-contributors', "bump:" + (type || 'patch'), 'npm-publish']);
+        return grunt.task.run(['test', 'npm-contributors', "bump:" + (type || 'patch') + ':bump-only', 'build', 'bump-commit', 'npm-publish']);
     });
     grunt.registerTask('test', ['simplemocha:unit', 'karma:unit']);
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask('default', ['build', 'test']);
 };
