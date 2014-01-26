@@ -33,6 +33,7 @@
     "grunt-bump": "~0.0.7",
     "grunt-simple-mocha": "git://github.com/yaymukund/grunt-simple-mocha.git",
     "grunt-contrib-watch": "~0.5.0",
+    "grunt-contrib-uglify": "~0.3.0",
     "load-grunt-tasks": "~0.2.0",
     "mocha": "~1.8",
     "grunt-karma": "~0.7.0",
