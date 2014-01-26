@@ -10,11 +10,6 @@ for [Karma](http://karma-runner.github.io)
 
 This package wrap [sinon.assert API](http://sinonjs.org/docs/#assertions) to expect.
 
-Requirements
-------------
-
-This Karma plugin requires Karma `~0.10.0`
-
 Installation
 ------------
 
@@ -39,6 +34,8 @@ global.expect = require('karma-sinon-expect').use(require('sinon'), require('exp
 ```
 
 ## Karma
+
+This Karma plugin requires Karma `~0.10.0`
 
 Add `sinon-expect` to the `frameworks` key in your Karma configuration:
 
