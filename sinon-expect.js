@@ -6,6 +6,12 @@
  */
 (function(global) {
     var isNode = typeof module === "object" && typeof require === "function";
+    /**
+     * Inspect
+     */
+    var i = function(obj) {
+        return obj.displayName || 'spy';
+    };
 
     var useSinonExpect = function(sinon, expect) {
         var generateExpectAssert = function(assertName) {
@@ -15,6 +21,19 @@
             };
         };
 
+        // Change type of error from default sinon 'AssertError'
+        // on expect 'Error'
+        sinon.assert.failException = 'Error';
+
+        /**
+         * Sinon.JS ships with a set of assertions that mirror most behavior
+         * verification methods and properties on spies and stubs.
+         * The advantage of using the assertions is that failed expectations
+         * on stubs and spies can be expressed directly as assertion
+         * failures with detailed and helpful error messages.
+         *
+         * http://sinonjs.org/docs/#assertions-api
+         */
         if (Object.keys) {
             Object.keys(sinon.assert).forEach(function(assertName) {
                 if (expect.Assertion.prototype[assertName]) {
@@ -31,6 +50,11 @@
             }
         }
 
+        /**
+         * @desc Array of arguments received, spy.args[0] is an array of arguments recevied in the first call.
+         * @see http://sinonjs.org/docs/#spies-api
+         * @param {argumentIndex} argumentIndex The index of argument
+         */
         expect.Assertion.prototype.argument = function(argumentIndex) {
             sinon.assert.called(this.obj);
             return expect(this.obj.args[0][argumentIndex]);
@@ -42,6 +66,33 @@
 
         expect.Assertion.prototype.secondArgument = function() {
             return expect(this.obj).argument(1);
+        };
+
+        /**
+         * @see http://sinonjs.org/docs/#spies-api
+         */
+        expect.Assertion.prototype.calledBefore = function(anotherSpy, msg) {
+            this.assert(
+                this.obj.calledBefore(anotherSpy),
+                msg || function() {
+                    return 'expected ' + i(this.obj) + ' to be called before ' + i(anotherSpy);
+                },
+                msg || function() {
+                    return 'expected ' + i(this.obj) + ' not called before ' + i(anotherSpy);
+                });
+            return this;
+        };
+
+        expect.Assertion.prototype.calledAfter = function(anotherSpy, msg) {
+            this.assert(
+                this.obj.calledAfter(anotherSpy),
+                msg || function() {
+                    return 'expected ' + i(this.obj) + ' to be called after ' + i(anotherSpy);
+                },
+                msg || function() {
+                    return 'expected ' + i(this.obj) + ' not called after ' + i(anotherSpy);
+                });
+            return this;
         };
 
         expect.sinon = sinon;

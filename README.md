@@ -86,6 +86,8 @@ Additional expectation
 - firstArgument
 - secondArgument
 - argument
+- [calledBefore](http://sinonjs.org/docs/#spy)
+- [calledAfter](http://sinonjs.org/docs/#spy)
 
 ```coffee
 describe 'tests sinon spy with arguments', ->

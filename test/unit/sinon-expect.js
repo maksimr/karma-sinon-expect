@@ -87,6 +87,84 @@ describe('expect', function() {
         });
     });
 
+    describe('expect.calledBefore', function() {
+        beforeEach(function() {
+            this.spy = sinon.spy();
+            this.anotherSpy = sinon.spy();
+
+            this.spy.displayName = 'spy';
+            this.anotherSpy.displayName = 'anotherSpy';
+        });
+
+        it('should pass if spy was called before anotherSpy', function() {
+            this.spy();
+            this.anotherSpy();
+
+            expect(this.spy).to.be.calledBefore(this.anotherSpy);
+        });
+
+        it('should fail when spy was called after anotherSpy', function() {
+            var that = this;
+
+            this.anotherSpy();
+            this.spy();
+
+            expect(function() {
+                expect(that.spy).to.be.calledBefore(that.anotherSpy);
+            }).to.throwError(/expected spy to be called before anotherSpy/);
+        });
+
+        it('should fail when spy was called before anotherSpy but we expect after', function() {
+            var that = this;
+
+            this.spy();
+            this.anotherSpy();
+
+            expect(function() {
+                expect(that.spy).to.not.be.calledBefore(that.anotherSpy);
+            }).to.throwError(/expected spy not called before anotherSpy/);
+        });
+    });
+
+    describe('expect.calledAfter', function() {
+        beforeEach(function() {
+            this.spy = sinon.spy();
+            this.anotherSpy = sinon.spy();
+
+            this.spy.displayName = 'spy';
+            this.anotherSpy.displayName = 'anotherSpy';
+        });
+
+        it('should pass if spy was called after anotherSpy', function() {
+            this.anotherSpy();
+            this.spy();
+
+            expect(this.spy).to.be.calledAfter(this.anotherSpy);
+        });
+
+        it('should fail when spy was called before anotherSpy', function() {
+            var that = this;
+
+            this.spy();
+            this.anotherSpy();
+
+            expect(function() {
+                expect(that.spy).to.be.calledAfter(that.anotherSpy);
+            }).to.throwError(/expected spy to be called after anotherSpy/);
+        });
+
+        it('should fail when spy was called after anotherSpy but we expect before', function() {
+            var that = this;
+
+            this.anotherSpy();
+            this.spy();
+
+            expect(function() {
+                expect(that.spy).to.not.be.calledAfter(that.anotherSpy);
+            }).to.throwError(/expected spy not called after anotherSpy/);
+        });
+    });
+
     /**
      * ...
      *
