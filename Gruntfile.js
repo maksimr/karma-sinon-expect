@@ -27,7 +27,6 @@ module.exports = function(grunt) {
             }
         },
         'npm-publish': {
-            requires: ['build'],
             options: {
                 abortIfDirty: true
             }
@@ -52,7 +51,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['uglify:all']);
     grunt.registerTask('release', 'Bump the version and publish to NPM.', function(type) {
-        return grunt.task.run(['test', 'npm-contributors', "bump:" + (type || 'patch') + ':bump-only', 'build', 'bump-commit', 'npm-publish']);
+        return grunt.task.run(['test', 'build', 'npm-contributors', "bump:" + (type || 'patch') + ':bump-only', 'bump-commit', 'npm-publish']);
     });
     grunt.registerTask('test', ['simplemocha:unit', 'karma:unit']);
     grunt.registerTask('default', ['build', 'test']);
