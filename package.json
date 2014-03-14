@@ -24,7 +24,7 @@
   "main": "sinon-expect.js",
   "dependencies": {
     "expect.js": "~0.2.0",
-    "sinon": "~1.7.3"
+    "sinon": "~1.8.x"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
